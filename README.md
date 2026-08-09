@@ -13,7 +13,8 @@ This is a school project created to practise the fundamentals of HTML, CSS, and 
 | `distance.html` | Calculates the distance from the origin using X and Y coordinates. |
 | `resume.html` | Personal information, contact details, education, skills, and interests. |
 | `hobby.html` | Information about gaming and learning technology. |
-| `resume&hobby.css` | Shared styling for the resume and hobby pages. |
+| `styles.css` | Shared responsive styling for every assignment page. |
+| `resume&hobby.css` | Compatibility file that loads `styles.css` for older links. |
 
 ## Calculator Rules
 
