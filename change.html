@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Calculator</title>
+</head>
+
+<body>
+
+<div style="
+border: 5px solid gray;
+display: inline-block;
+padding: 10px;
+border-radius: 25px;
+background-color: rgb(194,194,194);
+">
+
+    <h1>Change Calculator</h1>
+
+    <label>Please enter your amount:</label>
+    <input id="amountInput" type="number">
+
+    <button onclick="calculateChange()">Calculate</button>
+    <button onclick="goBack()">Back</button>
+
+    <div id="change-results"></div>
+
+</div>
+
+<script>
+
+function calculateChange()
+{
+    let amount = parseFloat(document.getElementById("amountInput").value);
+
+    // Validation
+    if(isNaN(amount))
+    {
+        alert("Please enter an amount.");
+        return;
+    }
+
+    if(amount <= 0)
+    {
+        alert("Please enter a positive number.");
+        return;
+    }
+
+    let denominations = [1000,500,100,50,20,10,5,2,1,0.5];
+
+    let result = "";
+
+    for(let i = 0; i < denominations.length; i++)
+    {
+        let count = Math.floor(amount / denominations[i]);
+
+        if(count > 0)
+        {
+            result += "<p>" + denominations[i] + " Baht : " + count + "</p>";
+            amount %= denominations[i];
+        }
+    }
+
+    document.getElementById("change-results").innerHTML = result;
+}
+
+function goBack()
+{
+    history.back();
+}
+
+</script>
+
+</body>
+</html>

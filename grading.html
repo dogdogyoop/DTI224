@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculate Grade</title>
+</head>
+
+<body>
+
+<div style="
+border: 5px solid gray;
+display: inline-block;
+padding: 10px;
+border-radius: 25px;
+background-color: rgb(194,194,194);
+">
+
+    <h1>Calculate Grade</h1>
+
+    <label>Enter Score:</label>
+    <input type="number" id="score">
+
+    <button onclick="calculateGrade()">Submit</button>
+    <button onclick="goBack()">Back</button>
+
+    <p id="result"></p>
+
+</div>
+
+<script>
+
+function calculateGrade()
+{
+    let score = document.getElementById("score").value;
+
+    // Validation
+    if(score == "")
+    {
+        alert("Please enter a score.");
+        return;
+    }
+
+    if(score < 0 || score > 100)
+    {
+        alert("Score must be between 0 and 100.");
+        return;
+    }
+
+    score = Number(score);
+
+    let grade;
+
+    if(score >= 80)
+        grade = "A";
+    else if(score >= 70)
+        grade = "B";
+    else if(score >= 60)
+        grade = "C";
+    else if(score >= 50)
+        grade = "D";
+    else
+        grade = "F";
+
+    document.getElementById("result").innerHTML =
+    "You got an " + grade;
+}
+
+function goBack()
+{
+    history.back();
+}
+
+</script>
+
+</body>
+</html>

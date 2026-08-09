@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Measurement Converter</title>
+</head>
+
+<body>
+
+<div style="
+border:5px solid gray;
+display:inline-block;
+padding:10px;
+border-radius:25px;
+background-color:rgb(194,194,194);
+">
+
+    <h1>Measurement Converter</h1>
+
+    <label>Enter Inch:</label>
+    <input type="number" id="inch">
+
+    <button onclick="convert()">Submit</button>
+    <button onclick="goBack()">Back</button>
+
+    <h2 id="result"></h2>
+
+</div>
+
+<script>
+
+function convert()
+{
+    let inch = document.getElementById("inch").value;
+
+    // Validation
+    if(inch == "")
+    {
+        alert("Please enter a value.");
+        return;
+    }
+
+    if(inch < 0)
+    {
+        alert("Please enter a positive number.");
+        return;
+    }
+
+    let cm = inch * 2.54;
+
+    document.getElementById("result").innerHTML =
+    "Equal to " + cm + " cm";
+}
+
+function goBack()
+{
+    history.back();
+}
+
+</script>
+
+</body>
+</html>
