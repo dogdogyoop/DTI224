@@ -1,0 +1,17 @@
+# Node.js dependencies
+node_modules/
+
+# IDE settings
+.idea/
+
+# Capacitor web bundle copied from the source files
+www/
+
+# Android build outputs and local SDK settings
+android/.gradle/
+android/**/build/
+android/**/local.properties
+
+# APK files are submitted separately, not committed to GitHub
+*.apk
+*.aab

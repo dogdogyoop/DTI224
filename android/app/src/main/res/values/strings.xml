@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">HTML and CSS Assignments</string>
+    <string name="title_activity_main">HTML and CSS Assignments</string>
+    <string name="package_name">com.phoneminhtut.assignments</string>
+    <string name="custom_url_scheme">com.phoneminhtut.assignments</string>
+</resources>
