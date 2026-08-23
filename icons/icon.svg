@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title>HTML and CSS Assignments</title>
+  <rect width="512" height="512" rx="112" fill="#2563eb"/>
+  <rect x="76" y="76" width="360" height="360" rx="54" fill="#eff6ff"/>
+  <path d="M165 160h182v58H223v76h106v58H223v76h124v58H165z" fill="#2563eb"/>
+  <circle cx="365" cy="163" r="40" fill="#f59e0b"/>
+  <path d="M365 142v42m-21-21h42" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+</svg>
