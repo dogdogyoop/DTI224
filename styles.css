@@ -30,6 +30,27 @@ body {
     place-items: center;
 }
 
+.page-back {
+    display: inline-block;
+    width: min(100%, 520px);
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--primary);
+    border-radius: 0.5rem;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.page-back:hover,
+.page-back:focus-visible {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
 .card {
     width: min(100%, 520px);
     padding: 2rem;
