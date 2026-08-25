@@ -1,4 +1,4 @@
-const CACHE_NAME = "html-css-assignments-v2";
+const CACHE_NAME = "html-css-assignments-v3";
 const APP_ASSETS = [
     "./",
     "./index.html",
