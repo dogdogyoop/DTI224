@@ -71,6 +71,7 @@
         item.addEventListener('pointerdown', (event) => {
             if (event.pointerType === 'mouse') return;
 
+            event.preventDefault();
             draggedItem = item;
             item.classList.add('is-dragging');
             item.setPointerCapture(event.pointerId);
@@ -80,6 +81,7 @@
         item.addEventListener('pointermove', (event) => {
             if (event.pointerType === 'mouse' || draggedItem !== item) return;
 
+            event.preventDefault();
             const area = document.elementFromPoint(event.clientX, event.clientY)?.closest('.drop-area');
             dropAreas.forEach((dropArea) => dropArea.classList.toggle('is-over', dropArea === area));
         });
@@ -98,6 +100,14 @@
             dropAreas.forEach((dropArea) => dropArea.classList.remove('is-over'));
             draggedItem = null;
         });
+
+        item.addEventListener('pointercancel', () => {
+            item.classList.remove('is-dragging');
+            dropAreas.forEach((dropArea) => dropArea.classList.remove('is-over'));
+            draggedItem = null;
+        });
+
+        item.addEventListener('contextmenu', (event) => event.preventDefault());
     });
 
     dropAreas.forEach((area) => {
