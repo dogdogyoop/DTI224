@@ -1,4 +1,4 @@
-const CACHE_NAME = "html-css-assignments-v1";
+const CACHE_NAME = "html-css-assignments-v2";
 const APP_ASSETS = [
     "./",
     "./index.html",
@@ -6,6 +6,7 @@ const APP_ASSETS = [
     "./grading.html",
     "./change.html",
     "./distance.html",
+    "./drag-and-drop.html",
     "./resume.html",
     "./hobby.html",
     "./styles.css",

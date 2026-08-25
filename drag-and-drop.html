@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="A drag and drop assignment.">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="drag-drop-page">
+<main class="card drag-drop-card">
+    <a href="index.html">Back to assignments</a>
+    <h1>Drag and Drop</h1>
+    <p class="drag-drop-intro">Drag an item into the box, then drag it back to the area outside.</p>
+
+    <section class="drag-drop-layout" aria-label="Drag and drop activity">
+        <div class="drop-area outside-area" id="outside-area">
+            <h2>Outside</h2>
+            <div class="items" id="items" aria-label="Items outside the box">
+                <div class="drag-item" draggable="true" tabindex="0" data-item="Apple"><img src="apple.jpg" alt="Apple"></div>
+                <div class="drag-item" draggable="true" tabindex="0" data-item="Book"><img src="book.jpg" alt="Book"></div>
+                <div class="drag-item" draggable="true" tabindex="0" data-item="Pencil"><img src="pencil.jpg" alt="Pencil"></div>
+            </div>
+        </div>
+
+        <div class="drop-area box-area" id="box-area">
+            <h2>Drop Box</h2>
+            <div class="items" id="box-items" aria-label="Items inside the box">
+                <p class="empty-message">Drop items here</p>
+            </div>
+        </div>
+    </section>
+
+    <p class="drag-status" id="drag-status" role="status" aria-live="polite">Choose an item to begin.</p>
+</main>
+
+<script>
+    const dropAreas = document.querySelectorAll('.drop-area');
+    const items = document.querySelectorAll('.drag-item');
+    const status = document.querySelector('#drag-status');
+    let draggedItem = null;
+
+    function updateEmptyMessage() {
+        document.querySelectorAll('.items').forEach((area) => {
+            const hasItems = area.querySelector('.drag-item');
+            const emptyMessage = area.querySelector('.empty-message');
+
+            if (!hasItems && !emptyMessage) {
+                area.innerHTML = '<p class="empty-message">Drop items here</p>';
+            } else if (hasItems && emptyMessage) {
+                emptyMessage.remove();
+            }
+        });
+    }
+
+    items.forEach((item) => {
+        item.addEventListener('dragstart', () => {
+            draggedItem = item;
+            item.classList.add('is-dragging');
+            status.textContent = `Moving ${item.dataset.item}.`;
+        });
+
+        item.addEventListener('dragend', () => {
+            item.classList.remove('is-dragging');
+            dropAreas.forEach((area) => area.classList.remove('is-over')); 
+            draggedItem = null;
+        });
+    });
+
+    dropAreas.forEach((area) => {
+        area.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            area.classList.add('is-over');
+        });
+
+        area.addEventListener('dragleave', () => {
+            area.classList.remove('is-over');
+        });
+
+        area.addEventListener('drop', (event) => {
+            event.preventDefault();
+            area.classList.remove('is-over');
+
+            if (draggedItem) {
+                area.querySelector('.items').append(draggedItem);
+                status.textContent = `${draggedItem.dataset.item} is now ${area.id === 'box-area' ? 'inside the box' : 'outside the box'}.`;
+                updateEmptyMessage();
+            }
+        });
+    });
+
+    updateEmptyMessage();
+</script>
+</body>
+</html>
