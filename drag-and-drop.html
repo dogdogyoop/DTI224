@@ -67,6 +67,37 @@
             dropAreas.forEach((area) => area.classList.remove('is-over')); 
             draggedItem = null;
         });
+
+        item.addEventListener('pointerdown', (event) => {
+            if (event.pointerType === 'mouse') return;
+
+            draggedItem = item;
+            item.classList.add('is-dragging');
+            item.setPointerCapture(event.pointerId);
+            status.textContent = `Moving ${item.dataset.item}.`;
+        });
+
+        item.addEventListener('pointermove', (event) => {
+            if (event.pointerType === 'mouse' || draggedItem !== item) return;
+
+            const area = document.elementFromPoint(event.clientX, event.clientY)?.closest('.drop-area');
+            dropAreas.forEach((dropArea) => dropArea.classList.toggle('is-over', dropArea === area));
+        });
+
+        item.addEventListener('pointerup', (event) => {
+            if (event.pointerType === 'mouse' || draggedItem !== item) return;
+
+            const area = document.elementFromPoint(event.clientX, event.clientY)?.closest('.drop-area');
+            if (area) {
+                area.querySelector('.items').append(item);
+                status.textContent = `${item.dataset.item} is now ${area.id === 'box-area' ? 'inside the box' : 'outside the box'}.`;
+                updateEmptyMessage();
+            }
+
+            item.classList.remove('is-dragging');
+            dropAreas.forEach((dropArea) => dropArea.classList.remove('is-over'));
+            draggedItem = null;
+        });
     });
 
     dropAreas.forEach((area) => {
